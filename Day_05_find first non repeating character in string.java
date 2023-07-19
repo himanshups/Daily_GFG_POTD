@@ -1,0 +1,57 @@
+//{ Driver Code Starts
+//Initial Template for Java
+
+import java.io.*;
+import java.lang.*;
+import java.util.*;
+
+class Driverclass
+{
+    public static void main(String args[])
+    {
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        
+        while(t-- > 0)
+        {
+            String st = sc.next();
+            
+            char ans=new Solution().nonrepeatingCharacter(st);
+            
+            if(ans!='$')
+            System.out.println(ans);
+            else
+            System.out.println(-1);
+        }
+    }
+}
+
+// } Driver Code Ends
+
+
+//User function Template for Java
+
+
+
+class Solution {
+    // Function to find the first non-repeating character in a string.
+    static char nonrepeatingCharacter(String S) {
+        // Create a LinkedHashMap to store the characters and their count in the string.
+        Map<Character, Integer> map = new LinkedHashMap<>();
+
+        // Initialize the count of each character to 0.
+        for (char ch : S.toCharArray()) {
+            map.put(ch, map.getOrDefault(ch, 0) + 1);
+        }
+
+        // Iterate through the characters in the string and find the first non-repeating character.
+        for (char ch : S.toCharArray()) {
+            if (map.get(ch) == 1) {
+                return ch;
+            }
+        }
+
+        // If no non-repeating character is found, return '$' as per the problem statement.
+        return '$';
+    }
+}
